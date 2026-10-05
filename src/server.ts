@@ -4,7 +4,7 @@ const app = express();
 const PORT = Number(process.env.PORT ?? 3000); 
 
 app.get ("/", (req, res) => {
-    res.send("DevOpsLab API fonctionne correctement !");
+    res.send("DevOpsLab API fonctionne correctement avec Git !");
 })
 
 app.listen (PORT, () =>{
