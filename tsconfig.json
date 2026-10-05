@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    // File Layout
+       "rootDir": "./src",     //indique à TypeScript la racine de la structure des fichiers sources lors de la génération des fichiers de sortie.
+       "outDir": "./dist",    // répertoire de sortie pour les fichiers compilés
+
+    // Environment Settings
+    "module": "nodenext",    // spécifie le système de modules à utiliser pour la compilation, ici "nodenext" pour les modules Node.js avec support ESNext
+    "target": "es2022",     // spécifie la version de JavaScript à laquelle le code sera compilé, ici "es2022" pour utiliser les fonctionnalités modernes de JavaScript
+    "types": ["node"],      // inclure globalement les déclarations de types fournies par @types/node
+ 
+    // Other Outputs
+    "sourceMap": true,       // génère des fichiers de mappage source pour faire le lien entre le code TypeScript et le code JavaScript compilé, utile pour le débogage
+   
+   // "declaration": true,    // génère des fichiers de déclaration TypeScript (.d.ts) pour les fichiers compilés, utile pour developper des bibliothèques TypeScript
+   // "declarationMap": true,  // permet de faire le lien entre les fichiers .d.ts et les fichiers sources TypeScript, utile pour le débogage des bibliothèques TypeScript
+
+    // Stricter Typechecking Options
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+
+    // Recommended Options
+    "strict": true,  // Active un ensemble de vérifications strictes du système de types TypeScript.
+   // "jsx": "react-jsx",  est principalement utilisé pour les projets React, mais peut être utilisé pour d'autres biblio de composants UI qui utilisent JSX
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "noUncheckedSideEffectImports": true,
+    "moduleDetection": "force",
+    "skipLibCheck": true, // ne pas vérifier les fichiers de déclaration des dépendances, ce qui peut accélérer la compilation
+    "noEmitOnError": true // s'il existe des erreurs de compilation, ne pas générer les fichiers de sortie
+  },
+
+  "include": ["src/**/*.ts"],   // inclut tous les fichiers TypeScript dans le répertoire "src" et ses sous-répertoires pour la compilation
+  "exclude": ["node_modules", "dist"]   // exclut les répertoires "node_modules" et "dist" de la compilation, car ils contiennent des fichiers qui ne doivent pas être compilés
+
+}
