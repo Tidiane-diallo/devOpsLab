@@ -11,3 +11,9 @@ app.listen (PORT, () =>{
     console.log(`Serveur demarre sur http://localhost:${PORT}`);
 })
 
+app.get("/health", (req, res) => {
+    res.status(200).json({
+        status: "oK",
+    })
+});
+
