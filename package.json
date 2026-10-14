@@ -7,6 +7,7 @@
     "build": "tsc",
     "start": "node dist/server.js",
     "start:local": "node --env-file=.env dist/server.js",
+    "lint": "eslint src && echo Aucune erreur trouvée",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -17,8 +18,11 @@
     "express": "^5.2.1"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@types/express": "^5.0.6",
     "@types/node": "^26.6.3",
-    "typescript": "^7.0.2"
+    "eslint": "^10.12.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.71.2"
   }
 }
