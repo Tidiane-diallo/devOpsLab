@@ -1,6 +1,6 @@
 import express from "express";
 import { isTaskTitleValid } from "./tasks/task.validation.js";
-import { createTask } from "./tasks/task.store.js"
+import { createTask, getTasks  } from "./tasks/task.store.js"
 
 const app = express(); 
 app.use(express.json());
@@ -14,6 +14,12 @@ app.get("/health", (req, res) => {
     res.status(200).json({
         status: "ok",
     })
+});
+
+app.get("/api/tasks", (req, res) => {
+    const tasks = getTasks();
+
+    return res.status(200).json(tasks);
 });
 
 app.post("/api/tasks", (req, res) => {

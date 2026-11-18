@@ -29,3 +29,7 @@ export function resetTasks(): void {
     tasks.length = 0;
     nextTaskId = 1;
 }
+
+export function getTasks(): Task[]{
+    return [...tasks];
+}

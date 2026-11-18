@@ -3,6 +3,10 @@ import { beforeEach, describe, expect, it } from "vitest";
 import { resetTasks } from "../src/tasks/task.store.js";
 import app from "../src/app.js";
 
+beforeEach(() => {
+    resetTasks();
+});
+
 describe ("POST /api/tasks",() => {
 
      beforeEach(() => {
@@ -82,6 +86,40 @@ describe ("POST /api/tasks",() => {
 
         expect(response.status).toBe(201);
         expect(response.body.id).toBe(1);
+    });
+
+});
+
+describe("GET /api/tasks", () => {
+
+    it("retourne un tableau vide lorsqu'aucune tâche n'existe", async () => {
+        const response = await request(app)
+            .get("/api/tasks");
+
+        expect(response.status).toBe(200);
+        expect(response.body).toEqual([]);
+    });
+
+    it("retourne les tâches créées", async () => {
+
+        await request(app)
+            .post("/api/tasks")
+            .send({
+                title: "Apprendre le DevOps",
+                scheduledAt: "2026-11-20T18:00:00-05:00",
+        });
+
+        const response = await request(app)
+            .get("/api/tasks");
+
+            expect(response.status).toBe(200);
+            expect(response.body).toHaveLength(1);
+
+            expect(response.body[0]).toMatchObject({
+                title: "Apprendre le DevOps",
+                scheduledAt: "2026-11-20T23:00:00.000Z",
+                completed: false,
+            });
     });
 
 });
