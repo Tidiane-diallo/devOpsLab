@@ -1,0 +1,13 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    image: devopslab-api:1.0
+
+    ports:
+      - "127.0.0.1:5000:3000"
+
+    environment:
+      PORT: "3000"
