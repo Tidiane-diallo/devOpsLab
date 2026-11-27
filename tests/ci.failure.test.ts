@@ -24,7 +24,7 @@ import app from "../src/app.js";
 
 describe("Démonstration d'un échec CI", () => {
 
-    it("simule une attente incorrecte sur /health", async () => {
+    it.skip("simule une attente incorrecte sur /health", async () => {
 
         const response = await request(app).get("/health");
 
