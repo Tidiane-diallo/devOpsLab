@@ -1,0 +1,43 @@
+name: DevOpsLab CI
+
+on:
+  push:
+    branches:
+      - main
+      - "feature/**"
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    name: Vérifier DevOpsLab
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v7
+
+      - name: Installer Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+          cache: "npm"
+
+      - name: Installer les dépendances
+        run: npm ci
+
+      - name: Vérifier ESLint
+        run: npm run lint
+
+      - name: Exécuter les tests
+        run: npm test
+
+      - name: Compiler TypeScript
+        run: npm run build
+
+      - name: Construire l'image Docker
+        run: docker build -t devopslab-api:ci .
